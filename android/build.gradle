@@ -22,7 +22,15 @@ android {
   defaultConfig {
     minSdkVersion safeExtGet('minSdkVersion', 16)
     targetSdkVersion safeExtGet('targetSdkVersion', 28)
+    missingDimensionStrategy 'react-native-camera', 'general'
   }
+
+    externalNativeBuild {
+        cmake {
+            version '3.10.2'
+            path "src/main/cpp/CMakeLists.txt"
+        }
+    }
 
   flavorDimensions "react-native-camera"
 
@@ -30,9 +38,9 @@ android {
     general {
       dimension "react-native-camera"
     }
-    mlkit {
-      dimension "react-native-camera"
-    }
+    //mlkit {
+    //  dimension "react-native-camera"
+    //}
   }
 
   sourceSets {
@@ -42,9 +50,9 @@ android {
     general {
       java.srcDirs = ['src/general/java']
     }
-    mlkit {
-      java.srcDirs = ['src/mlkit/java']
-    }
+    // mlkit {
+    //   java.srcDirs = ['src/mlkit/java']
+    // }
   }
 
   lintOptions {
@@ -79,6 +87,6 @@ dependencies {
   implementation "androidx.exifinterface:exifinterface:1.0.0"
   implementation "androidx.annotation:annotation:1.0.0"
   implementation "androidx.legacy:legacy-support-v4:1.0.0"
-  mlkitImplementation "com.google.firebase:firebase-ml-vision:${safeExtGet('firebase-ml-vision', '19.0.3')}"
-  mlkitImplementation "com.google.firebase:firebase-ml-vision-face-model:${safeExtGet('firebase-ml-vision-face-model', '17.0.2')}"
+  // mlkitImplementation "com.google.firebase:firebase-ml-vision:${safeExtGet('firebase-ml-vision', '19.0.3')}"
+  // mlkitImplementation "com.google.firebase:firebase-ml-vision-face-model:${safeExtGet('firebase-ml-vision-face-model', '17.0.2')}"
 }
